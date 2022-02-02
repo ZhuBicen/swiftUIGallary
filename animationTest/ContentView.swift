@@ -8,36 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isFaceUp : Bool = true
+    @State var isFaceUp : Bool = false
     var body: some View {
         
         VStack {
-            ZStack {
-                // RoundedRectangle(cornerRadius: 200).border(Color.red, width: 10)
-                let shape = RoundedRectangle(cornerRadius: 20)
-                if !isFaceUp {
-                    shape.fill().foregroundColor(Color.red)
-                }
-                shape.strokeBorder(lineWidth: 5, antialiased: true)
-                GeometryReader { geometry in
-                    // shape.strokeBorder()
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            if isFaceUp {
-                                Text("🐯")
-                                    .font(.system(size: min(geometry.size.width, geometry.size.height) * 0.7)).padding()
-                            } else {
-                                shape.fill().foregroundColor(Color.red)
-                            }
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                }
-            }.rotation3DEffect(Angle.degrees(isFaceUp ? 0 : 180), axis: (0, 1, 0))
-            
+            Card().cardify(isFaceUp: isFaceUp)
             HStack {
                 Button(
                     action: {
@@ -64,6 +39,46 @@ struct ContentView: View {
     }
 }
 
+struct Card : View {
+
+    var body : some View {
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("🐯").font(.system(size: min(geometry.size.width, geometry.size.height) * 0.7)).padding()
+                    Spacer()
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+
+struct Cardify : ViewModifier {
+ 
+    var isFaceUp : Bool = false
+
+    func body(content: Content) -> some View {
+        ZStack (alignment: .top) {
+            let shape = RoundedRectangle(cornerRadius: 20)
+            if isFaceUp {
+                shape.strokeBorder(lineWidth: 5, antialiased: true)
+                content
+            } else {
+                shape.fill().foregroundColor(.red)
+            }
+        }.rotation3DEffect(Angle.degrees(isFaceUp ? 0 : 180), axis: (0, 1, 0))
+    }
+}
+
+extension View {
+    func cardify(isFaceUp : Bool) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp))
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
