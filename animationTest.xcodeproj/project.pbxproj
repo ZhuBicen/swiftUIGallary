@@ -14,6 +14,8 @@
 		34AFE64527A67176007BD377 /* animationTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE64427A67176007BD377 /* animationTestTests.swift */; };
 		34AFE64F27A67176007BD377 /* animationTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE64E27A67176007BD377 /* animationTestUITests.swift */; };
 		34AFE65127A67176007BD377 /* animationTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE65027A67176007BD377 /* animationTestUITestsLaunchTests.swift */; };
+		34AFE65E27A6A027007BD377 /* RoundRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE65D27A6A027007BD377 /* RoundRectangleView.swift */; };
+		34AFE66027A78B24007BD377 /* RoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE65F27A78B24007BD377 /* RoundedRectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		34AFE64A27A67176007BD377 /* animationTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animationTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34AFE64E27A67176007BD377 /* animationTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animationTestUITests.swift; sourceTree = "<group>"; };
 		34AFE65027A67176007BD377 /* animationTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animationTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		34AFE65D27A6A027007BD377 /* RoundRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRectangleView.swift; sourceTree = "<group>"; };
+		34AFE65F27A78B24007BD377 /* RoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				34AFE63527A67174007BD377 /* ContentView.swift */,
 				34AFE63727A67175007BD377 /* Assets.xcassets */,
 				34AFE63927A67175007BD377 /* Preview Content */,
+				34AFE65D27A6A027007BD377 /* RoundRectangleView.swift */,
+				34AFE65F27A78B24007BD377 /* RoundedRectangle.swift */,
 			);
 			path = animationTest;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 			files = (
 				34AFE63627A67174007BD377 /* ContentView.swift in Sources */,
 				34AFE63427A67174007BD377 /* animationTestApp.swift in Sources */,
+				34AFE65E27A6A027007BD377 /* RoundRectangleView.swift in Sources */,
+				34AFE66027A78B24007BD377 /* RoundedRectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

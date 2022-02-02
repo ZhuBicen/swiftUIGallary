@@ -23,8 +23,11 @@ struct RoundedRectangleView: View {
         VStack {
             RoundedRectangle(cornerRadius: 25)
             RoundedRectangle(cornerRadius: 25).background(Color.green)
-            RoundedRectangle(cornerRadius: 25).strokeBorder(lineWidth: 22)
-            RoundedRectangle(cornerRadius: 25).fill().background(Color.red)
+            ZStack {
+                RoundedRectangle(cornerRadius: 25).strokeBorder(lineWidth: 5)
+                RoundedRectangle(cornerRadius: 25).fill()
+            }
+            RoundedRectangle(cornerRadius: 25).background(Color.red)
             RoundedRectangle(cornerRadius: 25).border(Color.red, width:3)
         }.padding()
     }

@@ -14,9 +14,13 @@ struct ContentView: View {
         VStack {
             ZStack {
                 // RoundedRectangle(cornerRadius: 200).border(Color.red, width: 10)
-                let shape = RoundedRectangle(cornerRadius: 30)
+                let shape = RoundedRectangle(cornerRadius: 20)
+                if !isFaceUp {
+                    shape.fill().foregroundColor(Color.red)
+                }
+                shape.strokeBorder(lineWidth: 5, antialiased: true)
                 GeometryReader { geometry in
-                    shape.strokeBorder()
+                    // shape.strokeBorder()
                     VStack {
                         Spacer()
                         HStack {
@@ -25,15 +29,14 @@ struct ContentView: View {
                                 Text("🐯")
                                     .font(.system(size: min(geometry.size.width, geometry.size.height) * 0.7)).padding()
                             } else {
-                                shape.background(Color.red)
+                                shape.fill().foregroundColor(Color.red)
                             }
-                                    
                             Spacer()
                         }
                         Spacer()
                     }
                 }
-            }.rotation3DEffect(Angle.degrees(180), axis: (0, 1, 0))
+            }.rotation3DEffect(Angle.degrees(isFaceUp ? 0 : 180), axis: (0, 1, 0))
             
             HStack {
                 Button(
@@ -60,6 +63,7 @@ struct ContentView: View {
         }.foregroundColor(.red).padding()
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
