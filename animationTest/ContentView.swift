@@ -57,20 +57,30 @@ struct Card : View {
 }
 
 
-struct Cardify : ViewModifier {
+struct Cardify : AnimatableModifier {
  
+    init(isFaceUp : Bool) {
+        self.rotation = isFaceUp ? 0 : 180
+    }
+    
     var isFaceUp : Bool = false
-
+    
+    var rotation : Double
+    
+    var animatableData: Double {
+        set { rotation = newValue }
+        get { rotation }
+    }
     func body(content: Content) -> some View {
         ZStack (alignment: .top) {
             let shape = RoundedRectangle(cornerRadius: 20)
-            if isFaceUp {
+            if rotation < 90 {
                 shape.strokeBorder(lineWidth: 5, antialiased: true)
                 content
             } else {
                 shape.fill().foregroundColor(.red)
             }
-        }.rotation3DEffect(Angle.degrees(isFaceUp ? 0 : 180), axis: (0, 1, 0))
+        }.rotation3DEffect(Angle.degrees(rotation), axis: (0, 1, 0))
     }
 }
 
