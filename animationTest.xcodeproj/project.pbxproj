@@ -16,6 +16,8 @@
 		34AFE65127A67176007BD377 /* animationTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE65027A67176007BD377 /* animationTestUITestsLaunchTests.swift */; };
 		34AFE65E27A6A027007BD377 /* RoundRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE65D27A6A027007BD377 /* RoundRectangleView.swift */; };
 		34AFE66027A78B24007BD377 /* RoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE65F27A78B24007BD377 /* RoundedRectangle.swift */; };
+		34AFE66227ABAB87007BD377 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE66127ABAB87007BD377 /* Pie.swift */; };
+		34AFE66427ABB716007BD377 /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AFE66327ABB716007BD377 /* PieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		34AFE65027A67176007BD377 /* animationTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animationTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		34AFE65D27A6A027007BD377 /* RoundRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRectangleView.swift; sourceTree = "<group>"; };
 		34AFE65F27A78B24007BD377 /* RoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangle.swift; sourceTree = "<group>"; };
+		34AFE66127ABAB87007BD377 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		34AFE66327ABB716007BD377 /* PieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				34AFE63927A67175007BD377 /* Preview Content */,
 				34AFE65D27A6A027007BD377 /* RoundRectangleView.swift */,
 				34AFE65F27A78B24007BD377 /* RoundedRectangle.swift */,
+				34AFE66127ABAB87007BD377 /* Pie.swift */,
+				34AFE66327ABB716007BD377 /* PieView.swift */,
 			);
 			path = animationTest;
 			sourceTree = "<group>";
@@ -263,10 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34AFE66227ABAB87007BD377 /* Pie.swift in Sources */,
 				34AFE63627A67174007BD377 /* ContentView.swift in Sources */,
 				34AFE63427A67174007BD377 /* animationTestApp.swift in Sources */,
 				34AFE65E27A6A027007BD377 /* RoundRectangleView.swift in Sources */,
 				34AFE66027A78B24007BD377 /* RoundedRectangle.swift in Sources */,
+				34AFE66427ABB716007BD377 /* PieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

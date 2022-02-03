@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isFaceUp : Bool = false
+    @State var isFaceUp : Bool = true
+    @State var startDegree : Double = -90
     var body: some View {
         
         VStack {
-            Card().cardify(isFaceUp: isFaceUp)
+             Card().cardify(isFaceUp: isFaceUp, startDegree: startDegree)
+
             HStack {
                 Button(
                     action: {
@@ -34,6 +36,16 @@ struct ContentView: View {
                         Image(systemName: "arrow.left.and.right.righttriangle.left.righttriangle.right.fill")
                     }
                 )
+                
+                Button("Animate") {
+                    withAnimation(.linear(duration : 10)) {
+                        if startDegree == -90 {
+                            startDegree = 270
+                        } else {
+                            startDegree = -90
+                        }
+                    }
+                }
             }
         }.foregroundColor(.red).padding()
     }
@@ -59,13 +71,13 @@ struct Card : View {
 
 struct Cardify : AnimatableModifier {
  
-    init(isFaceUp : Bool) {
+    init(isFaceUp : Bool, startDegree : Double) {
         self.rotation = isFaceUp ? 0 : 180
+        self.startDegree = startDegree
     }
-    
-    var isFaceUp : Bool = false
-    
+        
     var rotation : Double
+    var startDegree : Double = -90
     
     var animatableData: Double {
         set { rotation = newValue }
@@ -73,6 +85,10 @@ struct Cardify : AnimatableModifier {
     }
     func body(content: Content) -> some View {
         ZStack (alignment: .top) {
+            Pie(startAngle: Angle.degrees(startDegree),
+                endAngle: Angle.degrees(270),
+                clockWise: false)
+                .foregroundColor(.green)
             let shape = RoundedRectangle(cornerRadius: 20)
             if rotation < 90 {
                 shape.strokeBorder(lineWidth: 5, antialiased: true)
@@ -85,8 +101,8 @@ struct Cardify : AnimatableModifier {
 }
 
 extension View {
-    func cardify(isFaceUp : Bool) -> some View {
-        self.modifier(Cardify(isFaceUp: isFaceUp))
+    func cardify(isFaceUp : Bool, startDegree : Double) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp, startDegree: startDegree))
     }
 }
 
