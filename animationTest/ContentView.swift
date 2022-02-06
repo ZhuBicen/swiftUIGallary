@@ -10,11 +10,40 @@ import SwiftUI
 struct ContentView: View {
     @State var isFaceUp : Bool = true
     @State var startDegree : Double = -90
+    @State var isDealtCard : Bool = false
+    @Namespace var dealingNamespace
     var body: some View {
-        
+    
         VStack {
-             Card().cardify(isFaceUp: isFaceUp, startDegree: startDegree)
+            Card(content: "🍯").cardify(isFaceUp: isFaceUp, startDegree: startDegree)
+            if isDealtCard {
+                Card(content: "🐯").cardify(isFaceUp: true, startDegree: startDegree)
+                    .transition(AnyTransition.asymmetric(insertion: .identity, removal: .identity))
+                    .matchedGeometryEffect(id: 1, in: dealingNamespace)
+                    .zIndex(1)
+            } else {
+                Color.clear
+            }
 
+            Spacer()
+            
+                HStack {
+                    Color.clear
+                    ZStack {
+                        if !isDealtCard {
+                        Card(content: "🐯").cardify(isFaceUp: true, startDegree: startDegree)
+                            .matchedGeometryEffect(id: 1, in: dealingNamespace)
+                            .transition(AnyTransition.asymmetric(insertion: .identity, removal: .identity))
+                            .zIndex(1)
+                        }
+                            Card(content: "🐧").cardify(isFaceUp: true, startDegree: startDegree)
+                                .matchedGeometryEffect(id: 2, in: dealingNamespace)
+                                .zIndex(0)
+                        
+                    }
+                }
+            
+            
             HStack {
                 Button(
                     action: {
@@ -46,12 +75,19 @@ struct ContentView: View {
                         }
                     }
                 }
+                
+                Button ("DealCard") {
+                    withAnimation(.linear(duration: 3)) {
+                        isDealtCard = !isDealtCard
+                    }
+                }
             }
         }.foregroundColor(.red).padding()
     }
 }
 
 struct Card : View {
+    var content : String
 
     var body : some View {
         GeometryReader { geometry in
@@ -59,7 +95,7 @@ struct Card : View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Text("🐯").font(.system(size: min(geometry.size.width, geometry.size.height) * 0.7)).padding()
+                    Text(content).font(.system(size: min(geometry.size.width, geometry.size.height) * 0.7)).padding()
                     Spacer()
                 }
                 Spacer()
@@ -91,7 +127,7 @@ struct Cardify : AnimatableModifier {
                 .foregroundColor(.green)
             let shape = RoundedRectangle(cornerRadius: 20)
             if rotation < 90 {
-                shape.strokeBorder(lineWidth: 5, antialiased: true)
+                shape.strokeBorder(lineWidth: 2, antialiased: true)
                 content
             } else {
                 shape.fill().foregroundColor(.red)
